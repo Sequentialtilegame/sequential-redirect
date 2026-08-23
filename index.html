@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sequential</title>
+<script>
+  // ─────────────────────────────────────────────────────────────
+  // EDIT THIS: Google Play Store listing URL (Android redirect target)
+  const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.sequentialgame.app";
+  // ─────────────────────────────────────────────────────────────
+  // const APP_STORE_URL = ""; // TODO: fill in once Apple approves, e.g. "https://apps.apple.com/app/idXXXXXXXXXX"
+
+  var ua = navigator.userAgent || "";
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1); // iPadOS reports as Mac
+
+  if (isAndroid) {
+    location.replace(PLAY_STORE_URL);
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Staatliches&family=Inter:wght@400;600&display=swap');
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: radial-gradient(120% 140% at 50% 0%, #262A2E 0%, #1E2124 55%, #17191B 100%);
+    color: #E8EAEC;
+    font-family: 'Inter', system-ui, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    max-width: 420px;
+    width: 100%;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .title {
+    font-family: 'Staatliches', 'Inter', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.1em;
+    color: #E8EAEC;
+    text-shadow: 0 2px 0 rgba(0,0,0,.35);
+    margin: 0 0 8px;
+  }
+  .tag {
+    font-size: 14px;
+    color: #9AA3AA;
+    letter-spacing: 0.02em;
+    margin: 0 0 32px;
+  }
+  .msg {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #E8EAEC;
+    margin: 0 0 8px;
+  }
+  .sub {
+    font-size: 14px;
+    color: #9AA3AA;
+    margin: 0;
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 28px;
+    background: #5C9AE0;
+    color: #1A2024;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+  .divider {
+    margin: 36px 0;
+    border: none;
+    border-top: 1px solid rgba(201,185,143,.2);
+  }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1 class="title">SEQUENTIAL</h1>
+    <p class="tag">Pick the tiles in order, from memory.</p>
+
+    <div id="ios-block" class="hidden">
+      <p class="msg">Sequential is coming to the App Store soon.</p>
+      <p class="sub">Apple review is in progress — check back shortly.</p>
+    </div>
+
+    <div id="other-block" class="hidden">
+      <a class="btn" id="play-btn" href="#">Get it on Google Play</a>
+      <hr class="divider" />
+      <p class="msg">Sequential is coming to the App Store soon.</p>
+      <p class="sub">Apple review is in progress — check back shortly.</p>
+    </div>
+  </div>
+
+  <script>
+    if (!isAndroid) {
+      var block = isIOS ? document.getElementById('ios-block') : document.getElementById('other-block');
+      block.classList.remove('hidden');
+      var playBtn = document.getElementById('play-btn');
+      if (playBtn) playBtn.href = PLAY_STORE_URL;
+    }
+  </script>
+</body>
+</html>
