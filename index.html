@@ -8,8 +8,8 @@
   // ─────────────────────────────────────────────────────────────
   // EDIT THIS: Google Play Store listing URL (Android redirect target)
   const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.sequentialgame.app";
+  const APP_STORE_URL = "https://apps.apple.com/app/id6802125770";
   // ─────────────────────────────────────────────────────────────
-  // const APP_STORE_URL = ""; // TODO: fill in once Apple approves, e.g. "https://apps.apple.com/app/idXXXXXXXXXX"
 
   var ua = navigator.userAgent || "";
   var isAndroid = /Android/i.test(ua);
@@ -89,15 +89,13 @@
     <p class="tag">Pick the tiles in order, from memory.</p>
 
     <div id="ios-block" class="hidden">
-      <p class="msg">Sequential is coming to the App Store soon.</p>
-      <p class="sub">Apple review is in progress — check back shortly.</p>
+      <a class="btn" id="appstore-btn" href="#">Get it on the App Store</a>
     </div>
 
     <div id="other-block" class="hidden">
       <a class="btn" id="play-btn" href="#">Get it on Google Play</a>
       <hr class="divider" />
-      <p class="msg">Sequential is coming to the App Store soon.</p>
-      <p class="sub">Apple review is in progress — check back shortly.</p>
+      <a class="btn" id="appstore-btn-2" href="#">Get it on the App Store</a>
     </div>
   </div>
 
@@ -107,6 +105,10 @@
       block.classList.remove('hidden');
       var playBtn = document.getElementById('play-btn');
       if (playBtn) playBtn.href = PLAY_STORE_URL;
+      var appStoreBtn = document.getElementById('appstore-btn');
+      if (appStoreBtn) appStoreBtn.href = APP_STORE_URL;
+      var appStoreBtn2 = document.getElementById('appstore-btn-2');
+      if (appStoreBtn2) appStoreBtn2.href = APP_STORE_URL;
     }
   </script>
 </body>
